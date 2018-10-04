@@ -1,27 +1,17 @@
 var model = function () 
 {
-    var quizObject = 
-    { 
-        '1+1?': ["1","2","3", "4"] ,
-        '1-1?': ["1","2","3", "0"] ,
-        '1+2?': ["1","5","3", "6"] 
-     };
+    map = new Map();
 
-     var answerObject = ["2","0","3"];
-
-     localStorage.setItem('quizObject', JSON.stringify(quizObject));
-     localStorage.setItem('answerObject', JSON.stringify(answerObject));
-
- 
-
-    this.quizQuestions = [];
-    this.quizAnswers = [];
-    this.quizOptions = [];
-    this.quizQuestions.push("1");
-    this.quizQuestions.push("2");
-    this.quizQuestions.push("3");
-    this.quizAnswers.push(["1","2","3","4"]);
-
+    testObj = {
+        '1+1': ['1','2','3','4'],
+        '1-1': ['1','2','3','4'],
+        '1+2': ['1','2','3','4']
+    };
+    localStorage.setItem('quizObject', JSON.stringify(testObj));
+    this.quizObj = localStorage.getItem('quizObject')
+    this.answerObj = localStorage.getItem('answerObject')
+    this.removeQuizQuestions();
+    this.checkAnswer();
 };
 
 //Define functions that alter the model within here.
@@ -30,31 +20,47 @@ model.prototype = {
     //getters
     getQuizObj : function ()
     {
-        return JSON.parse(retrievedObj = localStorage.getItem('quizObject'));
+        return JSON.parse(this.quizObj);
+    },
+
+    getAnswerObj: function(){
+        return JSON.parse(this.answerObj);
     },
 
     checkAnswer : function (indexOfQuiz){
-
+        //console.log(typeof this.getAnswerObj());
     },
+
+
     //mutators
-    addQuizQuestions: function(question)
-    {
-        this.quizQuestions.push(question);
-    },
 
-    addQuizQuestionOptions : function(answer)
+    addQuizQuestion: function(property, options, value)
     {
-        this.quizAnswers.push(answer);
-    },
-
-    addQuizQuestionAnswers: function()
-    {
+        let clone = {...(this.getQuizObj)};
+        clone[property] = value;
+    
 
     },
 
-    removeQuizQuestions: function()
-    {
 
+    changeQuizProperty: function(key, value){
+        console.log("The key is: "+ key);
+        console.log(key);
+        console.log(value);
+        let clone = {...(this.getQuizObj())};
+        clone.value = clone.key; 
+        console.log(clone);
+       // localStorage.setItem('quizObject', clone)
+    },
+
+    removeQuizQuestions: function(index)
+    {
+    
+        let clone = {...(this.getQuizObj())};
+        var key = Array.from(Object.keys(clone))[index]; 
+        console.log(key);
+        delete clone[""+key];
+       // localStorage.setItem('quizObject', clone)
     },
 
     removeQuizQuestionOptions : function()
@@ -70,10 +76,9 @@ model.prototype = {
     //validation functions
     validateAnswers: function(index, val)
     {
-        jsonObj = JSON.parse(retrievedObj = localStorage.getItem('answerObject'));
-        console.log(jsonObj[index] == val);
+        jsonObj = JSON.parse(this.answerObj);
+        return(jsonObj[index] == val);
 
-        return(jsonObj[index] == val)
     }
 
 };

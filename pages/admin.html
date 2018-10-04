@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html>
+<title>Admin</title>
 
 <head>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
@@ -15,25 +16,27 @@
         crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
     <div class="container">
 
         <div class="row">
-            <div class="col-4">
-                <input type="button" class="remove-button btn btn-outline-primary" value="Remove Stuff">
+            <div class="col-sm">
+                <input type="button" class="remove-button btn btn-outline-primary" value="Remove Stuff" id="remove">
             </div>
-            <div class="col-4">
+            <div class="col-sm">
                 <input type="button" class="add-button btn btn-outline-success" value="Add stuff">
             </div>
-            <div class="col-4">
-                <input type="button" class="edit-button btn btn-outline-warning" value="Edit stuff">
+            <div class="col-sm">
+                <input type="button" class="edit-button btn btn-outline-warning" value="Edit stuff" id="edit">
             </div>
         </div>
 
+        <div class="quizzes" id="quizzes">
 
-
+        </div>
     </div>
     <script src="../scripts/eventdispatch.js"></script>
     <script src="../scripts/model.js"></script>
