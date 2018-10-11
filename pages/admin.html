@@ -17,6 +17,19 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBQ2WkaqucWOW_0cqG7WGGMpuhIfnVJJk0",
+    authDomain: "iisd-e0f3f.firebaseapp.com",
+    databaseURL: "https://iisd-e0f3f.firebaseio.com",
+    projectId: "iisd-e0f3f",
+    storageBucket: "iisd-e0f3f.appspot.com",
+    messagingSenderId: "54031326328"
+  };
+  firebase.initializeApp(config);
+</script>
 </head>
 
 <body>
@@ -27,18 +40,17 @@
                 <input type="button" class="remove-button btn btn-outline-primary" value="Remove Stuff" id="remove">
             </div>
             <div class="col-sm">
-                <input type="button" class="add-button btn btn-outline-success" value="Add stuff">
+                <input type="button" class="add-button btn btn-outline-success" value="Add stuff" id="add">
             </div>
             <div class="col-sm">
                 <input type="button" class="edit-button btn btn-outline-warning" value="Edit stuff" id="edit">
             </div>
         </div>
-
+        <div id="question_prompt" class="col"></div>
         <div class="quizzes" id="quizzes">
 
         </div>
     </div>
-    <script src="../scripts/eventdispatch.js"></script>
     <script src="../scripts/model.js"></script>
     <script src="../scripts/view.js"></script>
     <script src="../scripts/controller.js"></script>
